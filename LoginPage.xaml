@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             x:Class="MAGIApp.Views.LoginPage" 
+             xmlns:Controls="clr-namespace:MAGIApp.Controls"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="True"                      
+             NavigationPage.HasNavigationBar="False" 
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Source="Background1" Aspect="AspectFill" />
+            <ScrollView AbsoluteLayout.LayoutFlags="All" IsEnabled="{Binding LoginEnabled}" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Spacing="5" Padding="20">
+                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="10" Padding="20" >
+                        <Image HorizontalOptions="Center" HeightRequest="100" WidthRequest="300" Source="magilogologin" BackgroundColor="Transparent"/>
+
+                        <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" Padding="0" Spacing="10">
+
+                            <Frame HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand"
+                                   HeightRequest="50"
+                                   BorderColor="Gray"
+                                   Padding="1"
+                                   Margin="5,0,5,0"
+
+                                   BackgroundColor="White"
+                                   IsClippedToBounds="False"
+                                   HasShadow="False">
+
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="1" Padding="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="9.5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" HeightRequest="1" WidthRequest="5" BackgroundColor="White"/>
+                                    <Controls:XEntry Placeholder="Account or Email address" 
+                                                     Grid.Column="1"  
+                                                     Text="{Binding UserName}" 
+                                                     HorizontalOptions="FillAndExpand" 
+                                                     VerticalOptions="FillAndExpand" 
+                                                     HorizontalTextAlignment="Start"/>
+                                    <Image Source="email" HorizontalOptions="StartAndExpand" WidthRequest="100"></Image>
+                                </Grid>
+                            </Frame>
+                            <Frame HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand"
+                                   BorderColor="Gray"
+                                   Padding="1"
+                                   Margin="5,0,5,0"
+                                   BackgroundColor="White"
+                                   HeightRequest="50"
+                                   IsClippedToBounds="False"
+                                   HasShadow="False">
+                                <Grid HorizontalOptions="FillAndExpand"
+                                      VerticalOptions="FillAndExpand"
+                                      ColumnSpacing="1"
+                                      Padding="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="9*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView Grid.Column="0" 
+                                             HorizontalOptions="StartAndExpand" 
+                                             VerticalOptions="FillAndExpand" 
+                                             HeightRequest="1" 
+                                             WidthRequest="5" 
+                                             BackgroundColor="White"/>
+                                    <Controls:XEntry Placeholder="Password"
+                                                     IsPassword="{Binding PasswordVisi}"
+                                                     Grid.Column="1"
+                                                     Text="{Binding Password}"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     VerticalOptions="FillAndExpand"
+                                                     HorizontalTextAlignment="Start"/>
+                                    <!--ReturnCommand="{Binding SignInCommand}"ReturnType="Done"-->
+                                    <Image Source="lock"
+                                           HorizontalOptions="StartAndExpand"
+                                           WidthRequest="100"></Image>
+                                    <Image Source="{Binding EyeVisible}"
+                                           Grid.Column="2"
+                                           HorizontalOptions="EndAndExpand"
+                                           WidthRequest="100">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding EyeCommand}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </Frame>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" Margin="0"
+                                    Color="Black"
+                                       IsChecked="{Binding isChecked}"
+                                       HorizontalOptions="FillAndExpand"
+                                    CheckedChanged="CheckBox_CheckedChanged">
+                                </CheckBox>
+                                <Label Margin="0" Grid.Column="1"
+                                    Text="Remember Me" 
+                                       HorizontalOptions="FillAndExpand"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalOptions="FillAndExpand"
+                                       VerticalTextAlignment="Center"
+                                       TextColor="Black" 
+                                       FontSize="12"
+                                       LineBreakMode="WordWrap">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label Grid.Column="2"
+                                    Text="Forgot your password?"
+                                       HorizontalOptions="FillAndExpand"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="FillAndExpand"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="12"
+                                       LineBreakMode="WordWrap"
+                                       TextColor="Black">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ForgotCommand}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal" Spacing="5" Padding="5" >
+                                <Button Text="Sign In" 
+                                        
+                                        Command="{Binding SignInCommand}" 
+                                        CornerRadius="15"  
+                                        WidthRequest="90" 
+                                        HeightRequest="40" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        VerticalOptions="CenterAndExpand"
+                                        TextColor="White" BackgroundColor="Green" />
+
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

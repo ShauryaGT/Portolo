@@ -1,0 +1,1676 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAGIApp.Views.HomePage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             xmlns:controls="clr-namespace:MAGIApp.Controls"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <Image 
+               Source="Layer1" 
+               HeightRequest="50" 
+               WidthRequest="50" 
+               VerticalOptions="StartAndExpand" 
+               HorizontalOptions="FillAndExpand" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid HorizontalOptions="FillAndExpand" 
+                  x:Name="FirstGrid" 
+                  VerticalOptions="FillAndExpand"
+                  RowSpacing="5" 
+                  Padding="0"
+                  BackgroundColor="LightSkyBlue">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding heightpara}"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" 
+                   HorizontalOptions="FillAndExpand" 
+                   VerticalOptions="FillAndExpand" 
+                   IsClippedToBounds="True" 
+                   BackgroundColor="White" 
+                   HeightRequest="70" 
+                   BorderColor="Transparent"
+                   Padding="0">
+                    <Grid HorizontalOptions="FillAndExpand" 
+                      VerticalOptions="FillAndExpand" 
+                      ColumnSpacing="5" 
+                      Padding="0" 
+                      RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="Menu"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HeightRequest="40" WidthRequest="40" HorizontalOptions="StartAndExpand"  Margin="10,10,0,0"  VerticalOptions="CenterAndExpand" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenMenuDrawer}" NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="PortoloLogo"  
+                           Grid.Column="1" 
+                           Grid.Row="0" 
+                           Grid.RowSpan="2" 
+                           HorizontalOptions="CenterAndExpand"  
+                           Margin="0,0,0,0"  
+                           VerticalOptions="FillAndExpand" />
+                        <Label x:Name="VersionText"
+                           Grid.Column="2"
+                           Grid.Row="0"
+                              
+                               TextColor="Black"
+                           Grid.RowSpan="2"
+                           HorizontalOptions="EndAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+                    </Grid>
+                </Frame>
+                <controls:CustomFrame 
+                    CornerRadius="20,20,0,0"
+                   Grid.Row="1"
+                       BackgroundColor="SkyBlue"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   BorderColor="White">
+                    <ScrollView>
+                        <Grid VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <ScrollView  
+                            HorizontalOptions="FillAndExpand" 
+                                 Grid.Row="0"
+                                 VerticalOptions="FillAndExpand">
+                                <Grid HorizontalOptions="FillAndExpand" 
+                  VerticalOptions="FillAndExpand" 
+                  RowSpacing="15" 
+                  Padding="10" 
+                  IsVisible="{Binding isGridVisible}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Frame BackgroundColor="#ffffff"
+                       Grid.Row="0"
+                       HasShadow="False"
+                       Grid.Column="0"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.2*"/>
+                                                <RowDefinition Height="4.8*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="Alerticon"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for alerts-->
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="Alerts" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for alerts-->
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{}" 
+                                Grid.RowSpan="4"> <!--put new command for alerts-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+                                    <Frame BackgroundColor="#ffffff"
+                       Grid.Row="0"
+                       HasShadow="False"
+                       Grid.Column="1"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.0*"/>
+                                                <RowDefinition Height="5.0*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="Messageicon"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Messages-->
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="Messages" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Messages-->
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{}" 
+                                Grid.RowSpan="4"> <!--put new command for Messages-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+                                    <Frame BackgroundColor="#ffffff"
+                       Grid.Row="0"
+                       HasShadow="False"
+                       Grid.Column="2"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0"
+                          VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.85*"/>
+                                                <RowDefinition Height="5.15*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="user-profile"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for myProfile-->
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="My Profile" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for myProfile-->
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{}"
+                                Grid.RowSpan="4"> <!--put new command for myProfile-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+
+                                    <Frame IsVisible="{Binding IsDevelopment}"
+                                    BackgroundColor="#ffffff"
+                       Grid.Row="3"
+                       HasShadow="False"
+                       Grid.Column="0"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.7*"/>
+                                                <RowDefinition Height="5.3*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="helpicon"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1"/>
+                                            <Label Text="Help" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.Row="2"/>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                               Command="{}"
+                                Grid.RowSpan="4"> <!--put new command for Help-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+                                    <Frame IsVisible="{Binding IsDevelopment}"
+                                    BackgroundColor="#ffffff"
+                       Grid.Row="2"
+                       HasShadow="False"
+                       Grid.Column="2"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.0*"/>
+                                                <RowDefinition Height="5.0*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="surveyicon"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Surveys-->
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label  
+                               Text="Surveys"
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Surveys-->
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{}"
+                                Grid.RowSpan="4"> <!--put new command for Surveys-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+                                    <Frame BackgroundColor="#ffffff"
+                       Grid.Row="1"
+                       HasShadow="False"
+                       Grid.Column="0"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0"
+                          VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.85*"/>
+                                                <RowDefinition Height="5.15*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="checklisticon"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Checklists-->
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="CheckList" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Checklists-->
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{}"
+                                Grid.RowSpan="4"> <!--put new command for Checklists-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+                                    <Frame BackgroundColor="#ffffff"
+                       Grid.Row="1"
+                       HasShadow="False"
+                       Grid.Column="1"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0"
+                          VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.85*"/>
+                                                <RowDefinition Height="5.15*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="issueraised"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Issue Raised-->
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="My Issues Raised" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Issue Raised-->
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{}"
+                                Grid.RowSpan="4"> <!--put new command for Issue Raised-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+
+                                    <Frame IsVisible="False" BackgroundColor="#ffffff"
+                       Grid.Row="1"
+                       HasShadow="False"
+                       Grid.Column="1"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.05*"/>
+                                                <RowDefinition Height="4.95*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="organization"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OrganizationCommand}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="Participating Organizations" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="3"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OrganizationCommand}"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{Binding OrganizationCommand}"
+                                Grid.RowSpan="4">
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+                                    <!--<Frame BackgroundColor="#ffffff"
+                       Grid.Row="2"
+                       HasShadow="False"
+                       Grid.Column="2"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100"
+                       IsVisible="{Binding FeedbackVisible}">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.0*"/>
+                                            <RowDefinition Height="5.0*"/>
+                                            <RowDefinition Height="3.0*"/>
+                                            <RowDefinition Height="1.0*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="feedback"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding MyFeedbackCommand}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Label Text="Event &#10; Feedback" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding MyFeedbackCommand}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{Binding MyFeedbackCommand}"
+                                Grid.RowSpan="4">
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                    </Grid>
+                                </Frame>-->
+                                    <Frame BackgroundColor="#ffffff"
+                       Grid.Row="2"
+                       HasShadow="False"
+                       Grid.Column="1"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.0*"/>
+                                                <RowDefinition Height="5.0*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="forumimage"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Forums-->
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="Forums" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Forums-->
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{}"
+                                Grid.RowSpan="4"> <!--put new command for Forums-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+
+                                    <Frame BackgroundColor="#ffffff"
+                       Grid.Row="1"
+                       HasShadow="False"
+                       Grid.Column="2"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.8*"/>
+                                                <RowDefinition Height="4.5*"/>
+                                                <RowDefinition Height="0.5*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="issueaddress"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Issue Addressed-->
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="Issues Addressed" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="3" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Issue Addressed-->
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{}"
+                                Grid.RowSpan="4"> <!--put new command for Issue Addressed-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+                                    <!--<Frame BackgroundColor="#ffffff"
+                       Grid.Row="3"
+                       HasShadow="False"
+                       Grid.Column="2"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.0*"/>
+                                            <RowDefinition Height="5.0*"/>
+                                            <RowDefinition Height="3.0*"/>
+                                            <RowDefinition Height="1.0*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="survey"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding NonAttendeeCommand}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Label Text="Non-Attendee Survey" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding NonAttendeeCommand}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{Binding NonAttendeeCommand}"
+                                Grid.RowSpan="4">
+                                            <Button.Triggers> //needs to be commented later
+                                                <EventTrigger Event="Pressed">
+                                                    <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                </EventTrigger>
+                                                <EventTrigger Event="Released">
+                                                    <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                </EventTrigger>
+                                            </Button.Triggers>
+                                        </Button>
+                                    </Grid>
+                                </Frame>-->
+                                    <Frame BackgroundColor="#ffffff"
+                       Grid.Row="2"
+                       HasShadow="False"
+                       Grid.Column="0"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.0*"/>
+                                                <RowDefinition Height="5.0*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="issuelib"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1"/>
+                                            <Label Text="Issue Library" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.Row="2"/>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                               Command="{}"
+                                Grid.RowSpan="4"> <!--put new command for Issue Addressed-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+                                    <Frame BackgroundColor="#ffffff"
+                       Grid.Row="3"
+                       HasShadow="False"
+                       Grid.Column="1"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.7*"/>
+                                                <RowDefinition Height="5.3*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="abouticon"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1"/>
+                                            <Label Text="About Portolo" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap"/>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Grid.RowSpan="4"
+                            Command="{}"> <!--put new command for About Portolo-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+                                    <!--<Frame BackgroundColor="#ffffff"
+                       Grid.Row="2"
+                       HasShadow="False"
+                       Grid.Column="1"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.7*"/>
+                                            <RowDefinition Height="5.3*"/>
+                                            <RowDefinition Height="3.0*"/>
+                                            <RowDefinition Height="1.0*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="eventupdates"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1"/>
+                                        <Label Text="Event Updates" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap"/>
+                                        <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Grid.RowSpan="4"
+                            Command="{Binding UpdateCommand}">
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                    </Grid>
+                                </Frame>-->
+                                    <!--<Frame BackgroundColor="#ffffff"
+                       Grid.Row="3"
+                       HasShadow="False"
+                       Grid.Column="0"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.0*"/>
+                                                <RowDefinition Height="5.0*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="EventSummary"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding EventSummaryCommand}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="My Event Summary" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding EventSummaryCommand}"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{Binding EventSummaryCommand}"
+                                Grid.RowSpan="4">
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>-->
+                                    <Frame BackgroundColor="#ffffff"
+                                           Grid.Row="3"
+                                           HasShadow="False"
+                                           Grid.Column="2"
+                                           IsVisible="true"
+                                           BorderColor="#BEDDFO"
+                                           Padding="0"
+                                           CornerRadius="5"
+                                           HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.0*"/>
+                                                <RowDefinition Height="5.0*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="adminimg"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Admin Page-->
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="Admin Page" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{}"/> <!--put new command for Admin Page-->
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{}"
+                                Grid.RowSpan="4"> <!--put new command for Admin Page-->
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>
+                                    <!--<Frame BackgroundColor="#ffffff"
+                       Grid.Row="4"
+                       HasShadow="False"
+                       Grid.Column="0"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100"
+                                           IsVisible="{Binding isSpeaker}">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.0*"/>
+                                                <RowDefinition Height="5.0*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="speakerdinner"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SpeakerDinnerCommand}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="Speaker Dinner" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SpeakerDinnerCommand}"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{Binding SpeakerDinnerCommand}"
+                                Grid.RowSpan="4">
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>-->
+                                    <!--<Frame
+                                           BackgroundColor="#ffffff"
+                                           Grid.Row="4"
+                                           HasShadow="False"
+                                           Grid.Column="0"
+                                           BorderColor="#BEDDFO"
+                                           Padding="0"
+                                           CornerRadius="5"
+                                           HeightRequest="100">
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.0*"/>
+                                                <RowDefinition Height="5.0*"/>
+                                                <RowDefinition Height="3.0*"/>
+                                                <RowDefinition Height="1.0*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="eventsterms"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1"/>
+                                            <Label Text="Badges" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.Row="2"/>
+                                            <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                               Command="{Binding BadgeCommand}"
+                                Grid.RowSpan="4">
+                                                <Button.Triggers>
+                                                    <EventTrigger Event="Pressed">
+                                                        <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                    </EventTrigger>
+                                                    <EventTrigger Event="Released">
+                                                        <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                    </EventTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Frame>-->
+                                    <!--<Label Text="After your event experience, give us your feedback for five chances to win a $100 Amazon gift card"
+                                           Grid.Row="4"
+                                           Grid.ColumnSpan="3"
+                                           TextColor="Black"
+                                           IsVisible="{Binding feedbacklabel}"/>-->
+                                </Grid>
+                            </ScrollView>
+                        </Grid>
+                    </ScrollView>
+                </controls:CustomFrame>
+                <StackLayout IsVisible="false"
+                         Grid.Row="0"
+                         Grid.RowSpan="2"
+                         BackgroundColor="#C0808080">
+                    <StackLayout 
+                         Padding="20"
+                    VerticalOptions="CenterAndExpand"
+                         >
+                        <Frame Padding="10"
+                       HorizontalOptions="FillAndExpand"
+                       BackgroundColor="White"
+                       VerticalOptions="CenterAndExpand"
+                           CornerRadius="5"
+                       >
+                            <Grid HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid HorizontalOptions="FillAndExpand"
+                              Grid.Row="0"
+                              Padding="5"
+                                     VerticalOptions="FillAndExpand"
+                                     BackgroundColor="#03a9f4">
+                                    <Label Text="Polling Available"
+                                       VerticalTextAlignment="Center"
+                                       TextColor="Black"
+                                       FontAttributes="Bold"/>
+                                    <Label Text="X" 
+                                       FontSize="Large"
+                                       TextColor="Black"
+                                       HorizontalOptions="EndAndExpand"
+                                       Margin="0,0,10,0"
+                                       FontAttributes="Bold">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding PollingCommand}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <Image Source="{Binding BannerImage}"
+                       Grid.Row="2"
+                       HeightRequest="45"
+                       Aspect="Fill"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       IsAnimationPlaying="True"/>
+            </Grid>
+
+            <Grid HorizontalOptions="FillAndExpand" 
+                  x:Name="SecondGrid" 
+                  BackgroundColor="LightSkyBlue"
+                  VerticalOptions="FillAndExpand" 
+                  RowSpacing="5" 
+                  Padding="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" 
+                       HorizontalOptions="FillAndExpand" 
+                       VerticalOptions="FillAndExpand" 
+                       IsClippedToBounds="True"
+                       HeightRequest="70" 
+                       BorderColor="Transparent"
+                       BackgroundColor="LightSkyBlue"  
+                       Padding="0">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                              ColumnSpacing="5" Padding="0" RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="Menu"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HeightRequest="40" WidthRequest="40" HorizontalOptions="StartAndExpand"  Margin="10,10,0,0"  VerticalOptions="CenterAndExpand" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenMenuDrawer}" NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="Layer1"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="CenterAndExpand"  Margin="0,0,0,0"  VerticalOptions="FillAndExpand" />
+                    </Grid>
+                </Frame>
+                <controls:CustomFrame 
+                    CornerRadius="20,20,0,0"
+                   Grid.Row="1"
+                   VerticalOptions="FillAndExpand"
+                       BackgroundColor="White"
+                   BorderColor="White">
+                    <Grid VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <ScrollView  HorizontalOptions="FillAndExpand" 
+                                 Grid.Row="0"
+                  VerticalOptions="FillAndExpand">
+                            <Grid HorizontalOptions="FillAndExpand" 
+                  VerticalOptions="FillAndExpand" 
+                  RowSpacing="15" 
+                  Padding="10" 
+                  IsVisible="{Binding isGridVisible}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame BackgroundColor="#ffffff"
+                       Grid.Row="0"
+                       HasShadow="False"
+                       Grid.Column="0"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.0*"/>
+                                            <RowDefinition Height="5.0*"/>
+                                            <RowDefinition Height="3.0*"/>
+                                            <RowDefinition Height="1.0*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="program"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ProgramCommand}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Label Text="Program" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ProgramCommand}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{Binding ProgramCommand}"
+                                Grid.RowSpan="4">
+                                            <!--<Button.Triggers>
+                                                <EventTrigger Event="Pressed">
+                                                    <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                </EventTrigger>
+                                                <EventTrigger Event="Released">
+                                                    <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                </EventTrigger>
+                                            </Button.Triggers>-->
+                                        </Button>
+                                    </Grid>
+                                </Frame>
+                                <Frame BackgroundColor="#ffffff"
+                       Grid.Row="0"
+                       HasShadow="False"
+                       Grid.Column="1"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.0*"/>
+                                            <RowDefinition Height="5.0*"/>
+                                            <RowDefinition Height="3.0*"/>
+                                            <RowDefinition Height="1.0*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="faculty"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding SpeakerCommand}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Label Text="Faculty" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding SpeakerCommand}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{Binding SpeakerCommand}"
+                                Grid.RowSpan="4">
+                                            <!--<Button.Triggers>
+                                                <EventTrigger Event="Pressed">
+                                                    <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                </EventTrigger>
+                                                <EventTrigger Event="Released">
+                                                    <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                </EventTrigger>
+                                            </Button.Triggers>-->
+                                        </Button>
+                                    </Grid>
+                                </Frame>
+                                <Frame BackgroundColor="#ffffff"
+                       Grid.Row="0"
+                       HasShadow="False"
+                       Grid.Column="2"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.0*"/>
+                                            <RowDefinition Height="5.0*"/>
+                                            <RowDefinition Height="3.0*"/>
+                                            <RowDefinition Height="1.0*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="exibitor"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Item1Command}"/>
+                                            </Image.GestureRecognizers>
+
+                                        </Image>
+                                        <Label Text="Event Sponsors" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" 
+                               LineBreakMode="WordWrap">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                    Command="{Binding Item1Command}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{Binding Item1Command}"
+                                Grid.RowSpan="4">
+                                            <!--<Button.Triggers>
+                                                <EventTrigger Event="Pressed">
+                                                    <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                </EventTrigger>
+                                                <EventTrigger Event="Released">
+                                                    <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                </EventTrigger>
+                                            </Button.Triggers>-->
+                                        </Button>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame BackgroundColor="#ffffff"
+                       Grid.Row="1"
+                       HasShadow="False"
+                       Grid.Column="0"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.0*"/>
+                                            <RowDefinition Height="5.0*"/>
+                                            <RowDefinition Height="3.0*"/>
+                                            <RowDefinition Height="1.0*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="organization"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OrganizationCommand}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Label Text="Participating Organizations" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OrganizationCommand}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{Binding OrganizationCommand}"
+                                Grid.RowSpan="4">
+                                            <!--<Button.Triggers>
+                                                <EventTrigger Event="Pressed">
+                                                    <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                </EventTrigger>
+                                                <EventTrigger Event="Released">
+                                                    <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                </EventTrigger>
+                                            </Button.Triggers>-->
+                                        </Button>
+                                    </Grid>
+                                </Frame>
+                                <Frame BackgroundColor="#ffffff"
+                       Grid.Row="1"
+                       HasShadow="False"
+                       Grid.Column="1"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.0*"/>
+                                            <RowDefinition Height="5.0*"/>
+                                            <RowDefinition Height="3.0*"/>
+                                            <RowDefinition Height="1.0*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="eventupdates"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1"/>
+                                        <Label Text="Updates" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" 
+                               LineBreakMode="WordWrap"/>
+                                        <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Grid.RowSpan="4"
+                            Command="{Binding UpdateCommand}">
+                                            <!--<Button.Triggers>
+                                                <EventTrigger Event="Pressed">
+                                                    <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                </EventTrigger>
+                                                <EventTrigger Event="Released">
+                                                    <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                </EventTrigger>
+                                            </Button.Triggers>-->
+                                        </Button>
+                                    </Grid>
+                                </Frame>
+                                <Frame BackgroundColor="#ffffff"
+                       Grid.Row="1"
+                       HasShadow="False"
+                       Grid.Column="2"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.0*"/>
+                                            <RowDefinition Height="5.0*"/>
+                                            <RowDefinition Height="3.0*"/>
+                                            <RowDefinition Height="1.0*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="help"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding EventContactCommand}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Label Text="Help" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding EventContactCommand}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{Binding EventContactCommand}"
+                                Grid.RowSpan="4">
+                                            <Button.Triggers>
+                                                <EventTrigger Event="Pressed">
+                                                    <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                </EventTrigger>
+                                                <EventTrigger Event="Released">
+                                                    <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                </EventTrigger>
+                                            </Button.Triggers>
+                                        </Button>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame BackgroundColor="#ffffff"
+                       Grid.Row="2"
+                       HasShadow="False"
+                       Grid.Column="0"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.0*"/>
+                                            <RowDefinition Height="5.0*"/>
+                                            <RowDefinition Height="3.0*"/>
+                                            <RowDefinition Height="1.0*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="survey"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding NonAttendeeCommand}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Label Text="Non-Attendee Survey" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.RowSpan="2"
+                               Grid.Row="2" LineBreakMode="WordWrap">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding NonAttendeeCommand}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                                Command="{Binding NonAttendeeCommand}"
+                                Grid.RowSpan="4">
+                                            <!--<Button.Triggers>
+                                                <EventTrigger Event="Pressed">
+                                                    <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                </EventTrigger>
+                                                <EventTrigger Event="Released">
+                                                    <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                </EventTrigger>
+                                            </Button.Triggers>-->
+                                        </Button>
+                                    </Grid>
+                                </Frame>
+                                <Frame BackgroundColor="#ffffff"
+                       Grid.Row="2"
+                       HasShadow="False"
+                       Grid.Column="1"
+                       BorderColor="#BEDDFO"
+                       Padding="0"
+                       CornerRadius="5"
+                       HeightRequest="100">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.0*"/>
+                                            <RowDefinition Height="5.0*"/>
+                                            <RowDefinition Height="3.0*"/>
+                                            <RowDefinition Height="1.0*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="twitter"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Grid.Row="1"/>
+                                        <Label Text="Twitter" 
+                               TextColor="Black"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Start"
+                               HorizontalTextAlignment="Center"
+                               Grid.Row="2"/>
+                                        <Button    
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0" 
+                               Command="{Binding TwitterCommand}"
+                                Grid.RowSpan="4">
+                                            <!--<Button.Triggers>
+                                                <EventTrigger Event="Pressed">
+                                                    <controls:ButtonTriggerAction BackgroundColor="#C0808080" />
+                                                </EventTrigger>
+                                                <EventTrigger Event="Released">
+                                                    <controls:ButtonTriggerAction BackgroundColor="Transparent" />
+                                                </EventTrigger>
+                                            </Button.Triggers>-->
+                                        </Button>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </ScrollView>
+                    </Grid>
+                </controls:CustomFrame>
+                <Image Source="{Binding BannerImage}"
+                       Grid.Row="2"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Margin="0"
+                       IsAnimationPlaying="True"/>
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

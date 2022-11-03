@@ -1,0 +1,807 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="MAGIApp.Views.ProfilePages.EditProfilePage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False" 
+             xmlns:controls="clr-namespace:MAGIApp.Controls" xmlns:profileviewmodel="clr-namespace:MAGIApp.ViewModel.ProfileViewModel" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <Image Source="Layer1" HeightRequest="50" WidthRequest="50" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" 
+              VerticalOptions="FillAndExpand" 
+              RowSpacing="5" 
+              BackgroundColor="LightSkyBlue"              
+              Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding Heightpara}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" 
+                   BorderColor="Transparent"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand" 
+                   IsClippedToBounds="True"
+                   BackgroundColor="LightSkyBlue"
+                   HeightRequest="70" 
+                   Padding="0">
+                <Grid HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand" 
+                      ColumnSpacing="5" 
+                      Padding="0"
+                      RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="back"
+                           Grid.Column="0"
+                           Grid.Row="0" 
+                           Grid.RowSpan="2" 
+                           HeightRequest="40" 
+                           WidthRequest="40" 
+                           HorizontalOptions="StartAndExpand"  
+                           Margin="10,10,0,0"  
+                           VerticalOptions="CenterAndExpand" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding GoBackCommand}" 
+                                NumberOfTapsRequired="1"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image Source="Layer1"  
+                           Grid.Column="1" 
+                           Grid.Row="0" 
+                           Grid.RowSpan="2" 
+                           HorizontalOptions="CenterAndExpand" 
+                           Margin="0,0,0,0"  
+                           VerticalOptions="FillAndExpand" />
+                    <Image Source="home"
+                           Grid.Column="2"
+                           Grid.Row="0" 
+                           Grid.RowSpan="2" 
+                           HeightRequest="40" 
+                           WidthRequest="40" 
+                           HorizontalOptions="EndAndExpand"  
+                           Margin="0,10,10,0"  
+                           VerticalOptions="CenterAndExpand" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding GoHomeCommand}" 
+                                NumberOfTapsRequired="1"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </Frame>
+            <controls:CustomFrame 
+                   CornerRadius="20,20,0,0"
+                   Grid.Row="1"
+                   VerticalOptions="FillAndExpand"
+                   >
+                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" BackgroundColor="White" IsClippedToBounds="False" HasShadow="True" Margin="5,5,5,5">
+                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="10" Padding="15" BackgroundColor="White">
+                            <ffimageloading:CachedImage Source="{Binding UserImg}" x:Name="ProfileImage" HeightRequest="100" WidthRequest="100" Aspect="AspectFit" Margin="0,5,0,10">
+                                <ffimageloading:CachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Handle_Tapped" />
+                                        </ffimageloading:CachedImage.GestureRecognizers>
+                            </ffimageloading:CachedImage>
+                            <Label Text="{Binding UserName}"    FontSize="Large"  TextColor="Black" VerticalTextAlignment="Center" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand"/>
+                            <!--<Label  FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Account:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="10,0,0,0"/>
+                            <Label Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Small" Text="{Binding AccountLabel}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="10,0,0,0"/>
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>-->
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Salutation:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Picker Grid.Row="1" Grid.Column="0"
+                                        Title="Select" 
+                                        TitleColor="Black" ItemsSource="{Binding SalutationList}" 
+                                        ItemDisplayBinding="{Binding strText}" 
+                                        SelectedItem="{Binding SalutationModel1}"/>
+                            </Grid>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="Black" FontSize="Small" Text="First Name:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Label Grid.Row="0" Grid.Column="1" FontAttributes="Bold" TextColor="Black" FontSize="Small" Text="Middle Name:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Label Grid.Row="0" Grid.Column="2" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Last Name:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Entry Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Small" FontAttributes="None"  Text="{Binding FirstName}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                                <Entry Grid.Row="1" Grid.Column="1" TextColor="Black" FontSize="Small" FontAttributes="None"  Text="{Binding MiddleName}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                                <Entry Grid.Row="1" Grid.Column="2" TextColor="Black" FontSize="Small" FontAttributes="None"  Text="{Binding LastName}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                            </Grid>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Suffix:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Picker 
+                                    Grid.Row="1" Grid.Column="0"
+                                    ItemsSource="{Binding SuffixList}"
+                                    ItemDisplayBinding="{Binding strText}"
+                                    SelectedItem="{Binding SuffixModel1}"
+                                    Title="Select">
+                                </Picker>
+                            </Grid>
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Nickname:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" 
+                                   Grid.Column="0" 
+                                   TextColor="Black" 
+                                   FontSize="Small" 
+                                   FontAttributes="None" 
+                                   Text="{Binding NickNameLabel}" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   VerticalOptions="CenterAndExpand" />
+
+
+                            </Grid>
+                            <!--<BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Phonetic Name:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" 
+                                   Grid.Column="0" 
+                                   TextColor="Black" 
+                                   FontSize="Small" 
+                                   FontAttributes="None" 
+                                   Text="{Binding PhoneticNameLabel}" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   VerticalOptions="CenterAndExpand" />
+
+
+                            </Grid>-->
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Sign-In Name:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" 
+                                   Grid.Column="0" 
+                                   TextColor="Black" 
+                                   FontSize="Small" 
+                                   FontAttributes="None" 
+                                   Text="{Binding SignInNameLabel}" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   VerticalOptions="CenterAndExpand" />
+
+
+                            </Grid>
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Job Title:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" 
+                                   Grid.Column="0" 
+                                   TextColor="Black" 
+                                   FontSize="Small" 
+                                   FontAttributes="None" 
+                                   Text="{Binding JobTittleLabel}" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   VerticalOptions="CenterAndExpand" />
+
+
+                            </Grid>
+                            
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="Black" FontSize="Small" Text="Department:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Small" FontAttributes="None"  Text="{Binding DepartmentLabel}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+
+
+                            </Grid>
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="Black" FontSize="Small" Text="Organization:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Small" FontAttributes="None"  Text="{}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+
+
+                            </Grid>
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="Black" FontSize="Small" Text="Degrees and Certifications:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Small" FontAttributes="None"  Text="{}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+
+
+                            </Grid>
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="Black" FontSize="Small" Text="Website:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Small" FontAttributes="None"  Text="{}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+
+
+                            </Grid>
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            
+                            <!--<BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <CheckBox x:Name="MemberCheckbox" CheckedChanged="MemberCheckbox_CheckedChanged"/>
+                                    <Label Text="MAGI Member" TextColor="Black" FontSize="Small" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <CheckBox x:Name="JournalCheckbox" CheckedChanged="JournalCheckbox_CheckedChanged"/>
+                                    <Label Text="Subscription to the Journal of Clinical Research Best Practices" TextColor="Black" FontSize="Small" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </StackLayout>-->
+
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+
+
+                            <Label  FontAttributes="Bold"  FontSize="20"  TextColor="Black" Text="Contact Information:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="10,20,0,0"/>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="10" Padding="10,0,10,0"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Email 1:" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Picker 
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    ItemsSource="{Binding emailResponseModels}"
+                                    ItemDisplayBinding="{Binding strText}"
+                                    SelectedItem="{Binding emailResponseModel}"
+                                    Title="Select">
+                                </Picker>
+                                <Entry x:Name="Email1Entry" Grid.Row="1" Grid.ColumnSpan="2" TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding UserMailidLabel}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+                            </Grid>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  RowSpacing="10" Padding="10,0,10,0"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Email 2:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Picker 
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    ItemsSource="{Binding emailResponseModels1}"
+                                    ItemDisplayBinding="{Binding strText}"
+                                    SelectedItem="{Binding emailResponseModel1}"
+                                    Title="Select">
+                                </Picker>
+                                <Entry x:Name="Email2Entry" Grid.Row="1" Grid.ColumnSpan="2" TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding UserMailidLabel2}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextChanged="Email2Entry_TextChanged"/>
+
+                            </Grid>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  RowSpacing="10" Padding="10,0,10,0" IsVisible="{Binding Emailtousevisible}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Email To Use:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <RadioButton FontSize="Small" Grid.Row="1" Grid.Column="0" Content="First" Value="0" GroupName="Email" x:Name="FirstEmailRB" CheckedChanged="FirstEmailRB_CheckedChanged"/>
+                                <RadioButton FontSize="Small" Grid.Row="1" Grid.Column="1" Content="Second" Value="1" GroupName="Email" x:Name="SecondEmailRB" CheckedChanged="SecondEmailRB_CheckedChanged"/>
+                                <RadioButton FontSize="Small" Grid.Row="1" Grid.Column="2" Content="Both" Value="2" GroupName="Email" x:Name="BothEmailRB" CheckedChanged="BothEmailRB_CheckedChanged"/>
+                            </Grid>
+
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="60" RowSpacing="10" Padding="10,0,10,0"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="Black" FontSize="Small" Text="Phone 1:" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                                <Picker 
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    ItemsSource="{Binding phoneResponseModels1}"
+                                    ItemDisplayBinding="{Binding PhoneTypeID}"
+                                    SelectedItem="{Binding phoneResponseModel}"
+                                    Title="Select">
+                                </Picker>
+
+                                <Label Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Small" Text="Country Code:" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                                <Entry Grid.Row="1" Grid.Column="1" TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding CcLabel}" VerticalOptions="CenterAndExpand" />
+
+                                <Label Grid.Row="2" Grid.Column="0" TextColor="Black" FontSize="Small" Text="Number:" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                                <Entry Grid.Row="2" Grid.Column="1" TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding PhoneLabel}" VerticalOptions="CenterAndExpand" />
+
+                                <Label Grid.Row="3" Grid.Column="0" TextColor="Black" FontSize="Small" Text="Extension:" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                                <Entry Grid.Row="3" Grid.Column="1" TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding ExtLabel}" VerticalOptions="CenterAndExpand" />
+                            </Grid>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="60" RowSpacing="10" Padding="10,0,10,0"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="Black" FontSize="Small" Text="Phone 2:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Picker 
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    ItemsSource="{Binding phoneResponseModels}"
+                                    ItemDisplayBinding="{Binding PhoneTypeID}"
+                                    SelectedItem="{Binding phoneResponseModel1}"
+                                    Title="Select">
+                                </Picker>
+
+                                <Label Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Small" Text="Country Code:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                <Entry Grid.Row="1" Grid.Column="1" TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding CcLabel2}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" TextColor="Black" FontSize="Small" Text="Number:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                <Entry Grid.Row="2" Grid.Column="1" TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding PhoneLabel2}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+
+                                <Label Grid.Row="3" Grid.Column="0" TextColor="Black" FontSize="Small" Text="Extension:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                <Entry Grid.Row="3" Grid.Column="1" TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding ExtLabel2}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                            </Grid>
+
+                            <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="60" RowSpacing="10" Padding="10,0,10,0"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="Black" FontSize="Small" Text="Ok To Call Mobile:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <RadioButton FontSize="Small" Grid.Row="1" Grid.Column="0" Content="Yes" Value="Yes" GroupName="ToCall" x:Name="YesCallRB" CheckedChanged="YesCallRB_CheckedChanged"/>
+                                <RadioButton FontSize="Small" Grid.Row="1" Grid.Column="1" Content="No" Value="No" GroupName="ToCall" x:Name="NoCallRB" CheckedChanged="NoCallRB_CheckedChanged"/>
+                            </Grid>-->
+
+
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Address1:" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Entry Grid.Row="1" Grid.Column="0"  TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding Address1Label}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                            </Grid>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"  FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Address2:" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Entry Grid.Row="1"  TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding Address2Label}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                            </Grid>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="60" RowSpacing="10" Padding="10,0,10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="State/Province:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Entry Grid.Row="1" IsVisible="{Binding LabelStateVisible}" Placeholder="State" Grid.Column="0"   TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding StateLabel}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />
+                                <Picker IsVisible="{Binding StateVisible}" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding StateList}" ItemDisplayBinding="{Binding strText}" SelectedItem="{Binding StateModel1}" Title="Select"></Picker>
+                            </Grid>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="60" RowSpacing="10" Padding="10,0,10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>                                    
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Country:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Picker Grid.Row="1" Grid.Column="0" ItemsSource="{Binding CountryList}" ItemDisplayBinding="{Binding strText}" SelectedItem="{Binding CountryModel1}" Title="Select"></Picker>
+                                <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="City:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>                                
+                                <Entry Grid.Row="3" Grid.Column="0" TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding CityLabel}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                            </Grid>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="60" RowSpacing="10" Padding="10,0,10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>                                    
+                                </Grid.ColumnDefinitions>                                
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Postal Code:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Entry Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Small" FontAttributes="None" Text="{Binding ZipcodeLabel}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Time Zone:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Picker Grid.Row="3" Grid.Column="0" ItemsSource="{Binding TimezoneList}" ItemDisplayBinding="{Binding strText}" SelectedItem="{Binding TimezoneModel1}" Title="Select"></Picker>                                
+                            </Grid>
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+
+
+                            <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Degrees and Credentials:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" 
+                                   Grid.Column="0" 
+                                   TextColor="Black" 
+                                   FontSize="Small" 
+                                   FontAttributes="None" 
+                                   Text="{Binding DegreeLabel}" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   VerticalOptions="CenterAndExpand" />
+                            </Grid>
+
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>-->
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="LinkedIn URL:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" 
+                                   Grid.Column="0" 
+                                   TextColor="Black" 
+                                   FontSize="Small" 
+                                   FontAttributes="None" 
+                                   Text="{Binding LinkedInLabel}" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   VerticalOptions="CenterAndExpand" />
+                            </Grid>
+
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="Skype Address:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" 
+                                   Grid.Column="0" 
+                                   TextColor="Black" 
+                                   FontSize="Small" 
+                                   FontAttributes="None" 
+                                   Text="{Binding SkypeLabel}" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   VerticalOptions="CenterAndExpand" />
+                            </Grid>
+
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+
+                            <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="License Type:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Picker 
+                                    Grid.Row="1" Grid.Column="0"
+                                    ItemsSource="{Binding LicenseList}"
+                                    ItemDisplayBinding="{Binding strText}"
+                                    SelectedItem="{Binding LicenseModel1}"
+                                    Title="Select">
+                                </Picker>
+                            </Grid>
+
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="License State:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" 
+                                   Grid.Column="0" 
+                                   TextColor="Black" 
+                                   FontSize="Small" 
+                                   FontAttributes="None" 
+                                   Text="{Binding LicenseStateLabel}" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   VerticalOptions="CenterAndExpand" />
+
+
+                            </Grid>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="10" Padding="10,0,10,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Black" FontSize="Small" Text="License Number:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Entry Grid.Row="1" 
+                                   Grid.Column="0" 
+                                   TextColor="Black" 
+                                   FontSize="Small" 
+                                   FontAttributes="None" 
+                                   Text="{Binding LicenseNumberLabel}" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   VerticalOptions="CenterAndExpand" />
+
+
+                            </Grid>
+
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>-->
+
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="5" Padding="10,0,10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0"  FontSize="Small" FontAttributes="Bold" TextColor="Black" Text="My bio (visible to others):" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Frame HasShadow="True" IsClippedToBounds="True" BorderColor="Black" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="100" Padding="10" >
+                                    <Editor Placeholder="" Text="{Binding PersonalBio}" FontSize="Small" PlaceholderColor="Black" MaxLength="500" BackgroundColor="Transparent" CharacterSpacing="0" IsSpellCheckEnabled="False"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" TextChanged="PersonalBioChanged"></Editor>                                    
+                                </Frame>
+                                <Label x:Name="BioCounterText" Grid.Row="2" FontSize="Small" TextColor="Black" Text="" IsVisible="false" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                            </Grid>
+                            <!--<BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="5" Padding="10,0,10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0"  FontSize="Small" FontAttributes="Bold" TextColor="Black" Text="About my organization and my role (public will not see this information):" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Frame HasShadow="True" IsClippedToBounds="True" BorderColor="Black" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="100" Padding="10" >
+                                    <Editor Placeholder="" Text="{Binding AboutMe}" PlaceholderColor="Black" BackgroundColor="Transparent" MaxLength="50" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Editor>
+                                </Frame>
+                            </Grid>-->
+                            <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="80" RowSpacing="5" Padding="10,0,10,0" Margin="0,30,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0"  FontSize="Small" FontAttributes="Bold" TextColor="#F16F25" Text="Email" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Grid.Row="1" TextColor="Black"  FontSize="Large" FontAttributes="None" Text="{Binding UserMailidLabel}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+
+                        </Grid>-->
+
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="5" Padding="10,0,10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0"  FontSize="Small" FontAttributes="Bold" TextColor="Black" Text="About My Organization And My Role:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Frame HasShadow="True" IsClippedToBounds="True" BorderColor="Black" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="100" Padding="10" >
+                                    <Editor Placeholder="" Text="{Binding userRole}" FontSize="Small" PlaceholderColor="Black" MaxLength="500" BackgroundColor="Transparent" CharacterSpacing="0" IsSpellCheckEnabled="False"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" TextChanged="UserRoleChanged"></Editor>                                    
+                                </Frame>
+                                <Label x:Name="UserRoleText" Grid.Row="2" FontSize="Small" TextColor="Black" Text="" IsVisible="false" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                            </Grid>
+
+                            <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="1" BackgroundColor="LightGray"/>
+
+                            <Grid Grid.Column="0" HorizontalOptions="FillAndExpand"
+                                Grid.ColumnSpan="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button 
+                                FontAttributes="Bold"
+                                TextColor="Black" 
+                                FontSize="Small" 
+                                Grid.Column="1"
+                                BackgroundColor="White"                                            
+                                CornerRadius="5"
+                                WidthRequest="150"
+                                BorderColor="#BEDDFO"
+                                BorderWidth="1"
+                                Text="Cancel"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"  
+                                Command="{Binding GoBackCommand}" />
+                                <Button 
+                                FontAttributes="Bold"
+                                TextColor="Black" 
+                                FontSize="Small" 
+                                Grid.Column="0"
+                                BackgroundColor="White"                                            
+                                CornerRadius="5"
+                                WidthRequest="150"
+                                BorderColor="#BEDDFO"
+                                BorderWidth="1"
+                                Text="Save"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"  
+                                Command="{Binding UpdateProfileDataCommand}" />
+                            </Grid>
+
+                        </StackLayout>
+                    </ScrollView>
+                </Frame>
+            </controls:CustomFrame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+    
+    
+    
