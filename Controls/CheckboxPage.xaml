@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:pages="clr-namespace:MAGIApp.Controls"
+                x:Class="MAGIApp.Controls.CheckboxPage"
+                x:TypeArguments="x:String"
+                xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                ios:Page.UseSafeArea="True"
+                NavigationPage.HasNavigationBar="False"
+                NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <ListView x:Name="listView"
+                      ItemTapped="listView_ItemTapped"
+                      SeparatorVisibility="None"
+                      VerticalScrollBarVisibility="Never"
+                      HorizontalScrollBarVisibility="Never">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <CheckBox IsChecked="{Binding IsChecked}" Color="LightSkyBlue" HorizontalOptions="Start" Margin="5,0,0,5"/>
+                                <Label Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>   
+            <StackLayout HorizontalOptions="End"
+                         Orientation="Horizontal">
+                <Button Text="Done" Clicked="Done_Clicked" HorizontalOptions="Center" VerticalOptions="End"
+                        FontAttributes="Bold"
+                        TextColor="Black" 
+                        FontSize="Small"                                            
+                        BackgroundColor="White"                                            
+                        CornerRadius="5"
+                        HeightRequest="45"
+                        BorderWidth="1"
+                        BorderColor="#BEDDFO" 
+                        />
+                <Button Text="Cancel" Clicked="Cancel_Clicked" HorizontalOptions="Center" VerticalOptions="End"
+                        FontAttributes="Bold"
+                        TextColor="Black" 
+                        FontSize="Small"                                            
+                        BackgroundColor="White"                                            
+                        CornerRadius="5"
+                        BorderWidth="1"
+                        BorderColor="Red"
+                        HeightRequest="45"/>
+                
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</pages:BasePage>
